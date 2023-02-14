@@ -3,7 +3,7 @@
 In the project directory, you can run:
 ### `npm i`
 
-This will install all the dependencies that are present in package.json. \
+This will install all the dependencies that are present in package.json.
 
 ### `npm start`
 
