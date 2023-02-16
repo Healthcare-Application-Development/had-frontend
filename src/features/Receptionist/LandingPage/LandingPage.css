@@ -1,0 +1,16 @@
+.landing-page-container {
+    margin-top: 5%;
+    font-size: 20px;
+    text-align: center;
+}
+
+.landing-page-heading {
+    font-weight: bold;
+}
+
+.landing-page-options-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin: 8% 15% 0;
+}
