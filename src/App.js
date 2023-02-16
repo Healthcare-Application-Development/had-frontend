@@ -1,13 +1,10 @@
-import { Header } from './components';
-import { Sidebar } from './components';
-
 import './App.css';
+import { Receptionist } from './features';
 
 function App() {
   return (
     <div>
-      <Header />
-      <Sidebar />
+      <Receptionist />  
     </div>
   );
 }
