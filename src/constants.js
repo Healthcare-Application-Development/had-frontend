@@ -1,6 +1,6 @@
 export const constants  = {
 // Labels to be shown
-REACT_APP_NAV_BRAND : "CMS",
+REACT_APP_NAV_BRAND : "Hospital",
 REACT_APP_SIDEBAR_SEARCH_PATIENT_DATA : "Search Patient Data",
 REACT_APP_SIDEBAR_REQUEST_CONSENT : "Request Consent",
 REACT_APP_SIDEBAR_HISTORY : "History",
@@ -18,6 +18,10 @@ REACT_APP_ABHA_ID_LABEL : "ABHA ID",
 REACT_APP_REGISTER_LABEL : "Register",
 REACT_APP_SUCCESS_LABEL : "Success",
 REACT_APP_CLOSE_LABEL : "Close",
+REACT_APP_WHAT_TO_DO_LABEL : "What do you want to do?",
+REACT_APP_WELCOME_LABEL : "Welcome",
+REACT_APP_VIEW_PATIENTS_LABEL : "View Patients",
+REACT_APP_ADD_PATIENT_LABEL : "Add Patient",
 
 // Image names
 REACT_APP_NAV_LOGOUT_IMG : "logout",

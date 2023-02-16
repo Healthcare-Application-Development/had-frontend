@@ -1,12 +1,10 @@
-import React from 'react'
-import { Header } from '../../components';
-import  { RegisterPatient } from '../';
+import React from 'react';
+import { LandingPage } from '../';
 
 function Receptionist() {
     return (
         <div>
-            <Header />
-            <RegisterPatient />
+            <LandingPage />
         </div>
     )
 }

@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Form } from 'react-bootstrap';
-import { Textbox, Button, SuccessModal } from '../../components';
+import { Textbox, Button, SuccessModal } from '../../../components';
 import './RegisterPatient.css';
-import { constants } from '../../constants';
+import { constants } from '../../../constants';
 
 function RegisterPatient() {
     const [show, setShow] = useState(false);
