@@ -6,9 +6,7 @@ function Receptionist() {
     return (
         <div>
             <Header />
-            <div>
-                <RegisterPatient />
-            </div>
+            <RegisterPatient />
         </div>
     )
 }
