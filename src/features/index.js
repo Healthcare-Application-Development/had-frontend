@@ -2,3 +2,5 @@ export {default as RegisterPatient} from './Receptionist/RegisterPatient/Registe
 export {default as Receptionist} from './Receptionist/Receptionist';
 export {default as LandingPage} from './Receptionist/LandingPage/LandingPage';
 export {default as ViewPatients} from './Receptionist/ViewPatients/ViewPatients';
+export {default as CreateHospital} from './SuperAdmin/CreateHospital/CreateHospital';
+export {default as SuperAdmin} from './SuperAdmin/SuperAdmin';
