@@ -10,7 +10,7 @@ function Header() {
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav" className='nav-collapse-style'>
             <Nav className='nav-style'>
-              <Nav.Link href="#logout" className='nav-link-style'>
+              <Nav.Link href="/" className='nav-link-style'>
                 <img src={process.env.PUBLIC_URL + `/${constants.REACT_APP_NAV_LOGOUT_IMG}.png`} alt={constants.REACT_APP_NAV_LOGOUT_IMG} className='nav-img-style'/>
               </Nav.Link>
               <Nav.Link href="#settings" className='nav-link-style'>

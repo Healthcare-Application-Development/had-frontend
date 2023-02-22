@@ -22,7 +22,9 @@ REACT_APP_WHAT_TO_DO_LABEL : "What do you want to do?",
 REACT_APP_WELCOME_LABEL : "Welcome",
 REACT_APP_VIEW_PATIENTS_LABEL : "View Patients",
 REACT_APP_ADD_PATIENT_LABEL : "Add Patient",
-
+REACT_APP_LOGIN_LABEL : "Login",
+REACT_APP_PASSWORD_LABEL : "Password",
+REACT_APP_USERNAME_LABEL : "Username",
 // Image names
 REACT_APP_NAV_LOGOUT_IMG : "logout",
 REACT_APP_NAV_SETTINGS_IMG : "settings",
