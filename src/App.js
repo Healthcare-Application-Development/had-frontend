@@ -1,23 +1,30 @@
-import { Route, Routes } from 'react-router-dom';
 import './App.css';
-import { Header } from './components';
-import { Login, Receptionist, RegisterPatient, ViewPatients } from './features';
+import {Entry} from './entry'
+import { DoctorRegister } from './features/Doctor/doctorRegister/doctorregister';
+import { Receptionist } from './features';
+import { useState } from "react"
+import {DoctorList} from './Doctorview';
+
+import {Button } from './components'
+import {Route, Routes, useNavigate} from "react-router-dom";
 
 function App() {
+
   return (
-    <div>
-      <Header />
-      <Routes>
-        <Route path='/' element={<Login />} />
-        <Route path='/receptionist'>
-          <Route index element={<Receptionist />} />
-          <Route path='register' element={<RegisterPatient />} />
-          <Route path='view' element={<ViewPatients />} />
-        </Route>
-      </Routes>
-    </div>
-    
+   <Routes>
+
+<Route path='/' element={<Entry />} />
+<Route path='/docregister' element={<DoctorRegister />} />
+<Route path='/docregister/view' element={<DoctorList />} />
+
+
+
+   </Routes>
+
+
+
+  
   );
 }
-
+ 
 export default App;

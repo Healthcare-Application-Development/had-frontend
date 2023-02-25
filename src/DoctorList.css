@@ -1,0 +1,51 @@
+.doctor-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .doctor-card {
+    margin: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    width: 300px;
+  }
+  
+  .doctor-card .image-container {
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .doctor-card img {
+    max-height: 100%;
+    max-width: 100%;
+  }
+  
+  .doctor-card .doctor-info {
+    padding: 20px;
+  }
+  
+  .doctor-card h2 {
+    margin-top: 0;
+  }
+  
+  .doctor-card p {
+    margin: 5px 0;
+  }
+  
+  .doctor-card button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .doctor-card button:hover {
+    background-color: #0069d9;
+  }
+  
