@@ -4,7 +4,7 @@ import { useState } from "react"
 import {Button } from '../../components'
 import { useNavigate } from 'react-router-dom';
 
-export function Entry(){
+export function AdminHome(){
     const navigate=useNavigate();
 
     const [topping, setTopping] = useState("Doctor")
@@ -17,12 +17,12 @@ export function Entry(){
     navigate('/docregister')
   }
 return(
-    <div>
+<div>
    
 
   <div><div className="App">
-    <h2>Select the Entity to Register</h2>
-<div className="radio"><input
+  <h2>Select the Entity to Register</h2>
+  <div className="radio"><input
       type="radio"
       name="category"
       value="Doctor"
@@ -46,7 +46,7 @@ return(
   
 
     <p>
-      Select Category :   <strong>{topping}</strong>
+      Select Category :   <b>{topping}</b>
     </p>
 
 <div className="inputfiled"><Button label="Submit" onClick={()=>goto()} /></div>
@@ -61,3 +61,4 @@ return(
 )
 
 }
+export default AdminHome;

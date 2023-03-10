@@ -3,3 +3,4 @@ export {default as Receptionist} from './Receptionist/Receptionist';
 export {default as LandingPage} from './Receptionist/LandingPage/LandingPage';
 export {default as ViewPatients} from './Receptionist/ViewPatients/ViewPatients';
 export {default as Login} from './Login/Login';
+export {default as AdminHome} from './Admin/AdminHome';
