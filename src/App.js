@@ -2,6 +2,7 @@ import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import { Header } from './components';
 import { Login, Receptionist, RegisterPatient, ViewPatients } from './features';
+import {Entry} from './features/Admin/AdminHome'
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
           <Route path='register' element={<RegisterPatient />} />
           <Route path='view' element={<ViewPatients />} />
         </Route>
+        <Route path='/admin' element={<Entry />} />
       </Routes>
     </div>
     
