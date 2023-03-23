@@ -34,4 +34,4 @@ function RegisterReceptionist() {
     )
 }
 
-export default RegisterReceptionist;
+export default RegisterReceptionist; 

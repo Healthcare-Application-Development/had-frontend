@@ -10,7 +10,7 @@ function RegisterDoctor() {
         e.preventDefault();
         setShow(true);
     }
-
+ 
     return (
         <div className='form-container'>
             <p className='form-heading'>{constants.REACT_APP_ADMIN_DOCTOR_REGISTRATION}</p>
