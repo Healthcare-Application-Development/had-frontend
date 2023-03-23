@@ -14,7 +14,11 @@ export function AdminHome(){
     }
   
   function goto(){
-    navigate('/docregister')
+    if(topping==='Doctor')
+    navigate('/admin/registerdoctor')
+    else
+    navigate('/admin/registerreceptionist')
+
   }
 return(
 <div>
