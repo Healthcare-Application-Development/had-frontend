@@ -13,7 +13,7 @@ function RegisterPatient() {
 
     return (
         <div className='form-container'>
-            <p className='form-heading'>{constants.REACT_APP_REGISTRATION_HEADING}</p>
+            <p className='form-heading'>{constants.REACT_APP_PATIENT_REGISTRATION_HEADING}</p>
             <Form>
                 <Form.Group className="mb-4 form-group-style" >
                     <Textbox label = {constants.REACT_APP_NAME_LABEL} type="text"/>

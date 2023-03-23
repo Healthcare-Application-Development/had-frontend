@@ -3,3 +3,11 @@
     justify-content: center;
     margin-top: 2%;
 }
+.login-message {
+    text-align: center;
+    font-size: 25px;
+    font-weight: 300;
+}
+.radio-style {
+    margin-left: 47%;
+}
