@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Form } from 'react-bootstrap';
 import { Button, Textbox } from '../../components';
 import { constants } from '../../constants';
@@ -7,13 +7,22 @@ import './Login.css';
 
 function Login() {
     const navigate = useNavigate();
+    const [selectedOption, setSelectedOption] = useState("");
     const onLogin = () => {
-        navigate('/receptionist')
+        if (selectedOption === 'receptionist') {
+            navigate('/receptionist')
+        } else {
+            navigate('/admin')
+        }
     }
     return (
         <div className='mt-5'>
             <Form>
-                <p style={{textAlign:'center',fontSize: '25px',fontWeight: '300'}}>{constants.REACT_APP_LOGIN_LABEL}</p>
+                <p className='login-message'>{constants.REACT_APP_LOGIN_LABEL}</p>
+                <Form.Group className="mb-2 radio-style" >
+                    <Form.Check type='radio' name='login' label='Admin' onClick={() => setSelectedOption('admin')}/>
+                    <Form.Check type='radio' name='login' label='Receptionist' onClick={() => setSelectedOption('receptionist')}/>
+                </Form.Group>
                 <Form.Group className="mb-2 form-group-style" >
                     <Textbox label = {constants.REACT_APP_EMAIL_LABEL} type="email"/>
                 </Form.Group>
