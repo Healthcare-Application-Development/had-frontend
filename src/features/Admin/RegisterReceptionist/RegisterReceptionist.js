@@ -34,8 +34,8 @@ function RegisterReceptionist() {
         }).then(response => response.json())
         .then((data) => {
             console.log(data);
+            setShow(true);
         })
-        setShow(true);
     }
 
     return (
