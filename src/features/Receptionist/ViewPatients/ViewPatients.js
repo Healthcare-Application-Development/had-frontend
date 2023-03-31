@@ -19,14 +19,17 @@ class ViewPatients extends React.Component {
 
     render(){ 
         return (
-        <div>
-            <h1>Patients List</h1>
+            <div>
+            <br></br>
+            <center><h2>Patients List</h2></center>
+            <br></br>
+            <center>
             <table>
                 <thead>
                 <tr>
-                    <td>Name</td>
-                    <td>ID</td>
-                    <td>Email</td>
+                    <td><center>ID</center></td>
+                    <td><center>Name</center></td>
+                    <td><center>Email</center></td>
                     </tr>
                 </thead>
                
@@ -35,14 +38,17 @@ class ViewPatients extends React.Component {
                             this.state.patients.map(
                                 patient=>
                                 <tr key={patient.id}>
-                                    <td>{patient.name}</td>
-                                    <td>{patient.id}</td>
-                                    <td>{patient.email}</td>
+                                    <td><center>{patient.id}</center></td>
+                                    <td><center>{patient.name}</center></td>
+                                    <td><center>{patient.email}</center></td>
                                 </tr>
                             )
                         }
                     </tbody>
             </table>
+
+            </center>
+            
         </div>
     ) 
     }
