@@ -17,11 +17,28 @@ function RegisterDoctor() {
         const createObj = {
             name,
             email,
-            phone,
             gender,
-            address,
-            abhaID
+            address
         }
+
+        createObj["phoneNo"] = phone;
+        createObj["password"] = null;
+        createObj["id"] = Math.floor(Math.random() * 1000);
+        createObj["npciID"] = abhaID;
+
+        fetch(constants.REGISTER_DOCTOR_REST_API_URL, {
+            method:"POST",
+            headers:{
+                "Content-Type": "application/json",
+            },
+            body:JSON.stringify(createObj)
+        })
+        .then(response => response.json())
+        .then((createObj) => {
+            console.log("Success:", createObj);
+          })
+
+
         setShow(true);
     }
  
