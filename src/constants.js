@@ -44,7 +44,6 @@ REACT_APP_ADMIN_RECEPTIONIST_REGISTRATION : "Register Receptionist",
 
 //REST API URL
 GET_ALL_PATIENTS_REST_API_URL : "http://localhost:9101/patient/getAll",
-ADD_PATIENTS_REST_API_URL : "http://localhost:9101/patient/add",
-REGISTER_DOCTOR_REST_API_URL : "http://localhost:9101/admin/add"
+ADD_PATIENTS_REST_API_URL : "http://localhost:9101/patient/add"
 
 }

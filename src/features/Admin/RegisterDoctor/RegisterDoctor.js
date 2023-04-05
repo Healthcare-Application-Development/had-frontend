@@ -26,10 +26,11 @@ function RegisterDoctor() {
         createObj["id"] = Math.floor(Math.random() * 1000);
         createObj["npciID"] = abhaID;
 
-        fetch(constants.REGISTER_DOCTOR_REST_API_URL, {
+        fetch(`${window._env_.API_URL}/admin/add`, {
             method:"POST",
             headers:{
                 "Content-Type": "application/json",
+                'Authorization': 'Basic ' + localStorage.getItem("token")
             },
             body:JSON.stringify(createObj)
         })
