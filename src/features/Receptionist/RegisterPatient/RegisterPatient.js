@@ -1,13 +1,23 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Form } from 'react-bootstrap';
 import { Textbox, Button, SuccessModal } from '../../../components';
 import './RegisterPatient.css';
 import { constants } from '../../../constants';
+import { useNavigate } from 'react-router-dom';
 
 function RegisterPatient() {
     const [show, setShow] = useState(false);
     const [data, setData] = useState({})
-
+    const navigate = useNavigate();
+    useEffect(() => {
+        const login = JSON.parse(localStorage.getItem("user"));
+        if (!login  || login.role !== "RECEPTIONIST") {
+            navigate("/");
+        }
+        if (login || login.role === "RECEPTIONIST") {
+            navigate("/receptionist/register");
+        }
+    }, [])
     const updateData = e => {
         setData({
             ...data,

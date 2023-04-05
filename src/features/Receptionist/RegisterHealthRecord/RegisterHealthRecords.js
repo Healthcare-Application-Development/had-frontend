@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './RegisterHealthRecords.css';
 import AESUtils from '../../../encryption/AESUtils';
+import { useNavigate } from 'react-router-dom';
 
 function RegisterHealthRecords() {
   const [healthRecordType, setHealthRecordType] = useState('');
@@ -8,6 +9,17 @@ function RegisterHealthRecords() {
   const [description, setDescription] = useState('');
   const [successMessage, setSuccessMessage] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
+  const navigate = useNavigate();
+  useEffect(() => {
+      const login = JSON.parse(localStorage.getItem("user"));
+      if (!login || login.role !== "RECEPTIONIST") {
+          navigate("/");
+          return;
+      }
+      if (login || login.role === "RECEPTIONIST") {
+          navigate("/receptionist/healthrecord");
+      }
+  }, [])
   const recordTypes = {
     1: "Blood Report",
     2: "X-ray",

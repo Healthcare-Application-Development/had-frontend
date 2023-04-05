@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { Button } from '../../components'
 import { useNavigate } from 'react-router-dom';
 
@@ -10,7 +10,16 @@ function AdminHome() {
     const onOptionChange = e => {
       setTopping(e.target.value)
     }
-  
+    useEffect(() => {
+        const login = JSON.parse(localStorage.getItem("user"));
+        if (!login || login.role !== "ADMIN") {
+            navigate("/");
+            return;
+        }
+        if (login && login.role === "ADMIN") {
+          navigate("/admin")
+        }
+    }, [])
   const goto = () => {
     if(topping === 'Doctor')
         navigate('/admin/registerdoctor')

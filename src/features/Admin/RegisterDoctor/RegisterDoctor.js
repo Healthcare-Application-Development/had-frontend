@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Form } from 'react-bootstrap';
 import { Textbox, Button, SuccessModal } from '../../../components';
 import './RegisterDoctor.css';
 import { constants } from '../../../constants';
+import { useNavigate } from 'react-router-dom';
 
 function RegisterDoctor() {
     const [show, setShow] = useState(false);
@@ -12,6 +13,17 @@ function RegisterDoctor() {
     const [gender, setGender] = useState("");
     const [address, setAddress] = useState("");
     const [abhaID, setAbhaID] = useState("");
+    const navigate = useNavigate();
+    useEffect(() => {
+        const login = JSON.parse(localStorage.getItem("user"));
+        if (!login || login.role !== "ADMIN") {
+            navigate("/");
+            return;
+        }
+        if (login && login.role === "ADMIN") {
+            navigate("/admin/registerdoctor")
+        }
+    }, [])
     const onRegister = (e) => {
         e.preventDefault();
         const createObj = {
