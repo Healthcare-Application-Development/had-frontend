@@ -42,8 +42,4 @@ REACT_APP_SUCCESS_IMG : "success",
 REACT_APP_ADMIN_DOCTOR_REGISTRATION : "Register Doctor",
 REACT_APP_ADMIN_RECEPTIONIST_REGISTRATION : "Register Receptionist",
 
-//REST API URL
-GET_ALL_PATIENTS_REST_API_URL : "http://localhost:9101/patient/getAll",
-ADD_PATIENTS_REST_API_URL : "http://localhost:9101/patient/add"
-
 }

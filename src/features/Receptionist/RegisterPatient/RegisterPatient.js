@@ -20,10 +20,11 @@ function RegisterPatient() {
         data["id"] = Math.floor(Math.random() * 1000);
         data["password"] = null;
         console.log(data);
-        fetch(constants.ADD_PATIENTS_REST_API_URL, {
+        fetch(`${window._env_.API_URL}/patient/add`, {
             method:"POST",
             headers:{
                 "Content-Type": "application/json",
+                'Authorization': 'Basic ' + localStorage.getItem("token") 
             },
             body:JSON.stringify(data)
         })

@@ -1,25 +1,17 @@
-import React from 'react';
-import ServiceFetch from '../../../service/ServiceFetch';
+import React, { useEffect, useState } from 'react';
 import './ViewPatients.css';
 
-class ViewPatients extends React.Component {
+function ViewPatients() {
 
-    constructor(props){
-        super(props)
-        this.state = {
-            patients:[]
-        }
-    }
-    
-    componentDidMount(){
-        ServiceFetch.getPatients().then((res) => {
-            this.setState({patients:res.object});
-        });
-    }
+    const [data, setData] = useState([]);
 
-    render(){ 
+    useEffect(() => {fetch(`${window._env_.API_URL}/patient/getAll`).then((response => response.json())).then((data) => {
+        setData(data)
+        console.log(data)
+      })}, [])
+
         return (
-            <div>
+        <div>
             <br></br>
             <center><h2>Patients List</h2></center>
             <br></br>
@@ -35,14 +27,15 @@ class ViewPatients extends React.Component {
                
                     <tbody>
                         {
-                            this.state.patients.map(
-                                patient=>
-                                <tr key={patient.id}>
-                                    <td><center>{patient.id}</center></td>
-                                    <td><center>{patient.name}</center></td>
-                                    <td><center>{patient.email}</center></td>
-                                </tr>
-                            )
+                            data["object"].map(item => {
+                                return(
+                                    <tr key={item.id}>
+                                        <td>{item.id}</td>
+                                        <td>{item.name}</td>
+                                        <td>{item.email}</td>
+                                    </tr>
+                                )
+                            })
                         }
                     </tbody>
             </table>
@@ -51,7 +44,7 @@ class ViewPatients extends React.Component {
             
         </div>
     ) 
-    }
+    
 }
 
 export default ViewPatients;
