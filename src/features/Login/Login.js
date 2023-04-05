@@ -13,7 +13,13 @@ function Login() {
         e.preventDefault();
         const loginObj = {
             email: email,
-            password: password
+            login : {
+                username: email,
+                password: password,
+                role: {
+                    name : selectedOption === 'receptionist' ? 'RECEPTIONIST' : 'ADMIN'
+                }
+            }
         }
         var URL = '';
         if (selectedOption === 'receptionist') {
@@ -25,11 +31,14 @@ function Login() {
             body: JSON.stringify(loginObj),
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': 'Basic ' + (window.btoa(email + ":" + password))
             }
         }).then(response => response.json())
         .then((data) => {
             if (data.status === 200) {
+                localStorage.setItem("user", JSON.stringify(data.object))
+                localStorage.setItem("token", (window.btoa(email + ":" + password)))
                 if (selectedOption === 'receptionist') {
                     navigate('/receptionist')
                 } else {

@@ -11,7 +11,6 @@ function RegisterReceptionist() {
     const [phoneNo, setPhone] = useState("");
     const [gender, setGender] = useState("");
     const [address, setAddress] = useState("");
-    const [abhaID, setAbhaID] = useState("");
     const onRegister = (e) => {
         e.preventDefault();
         const password='receptionist';
@@ -21,21 +20,27 @@ function RegisterReceptionist() {
             phoneNo,
             gender,
             address,
-            abhaID,
-            password
+            login :{
+                username: email,
+                password: password,
+                role: {
+                    id: '2'
+                }
+            }
         }
 
         fetch(`${window._env_.API_URL}/receptionist/add`, {
             body: JSON.stringify(createObj),
             method: 'POST',
             headers : {
-                'Content-Type' : 'application/json'
+                'Content-Type' : 'application/json',
+                'Authorization': 'Basic ' + localStorage.getItem("token") 
             }
         }).then(response => response.json())
         .then((data) => {
             console.log(data);
+            setShow(true);
         })
-        setShow(true);
     }
 
     return (
@@ -50,7 +55,6 @@ function RegisterReceptionist() {
                 <Form.Group className="mb-4 form-group-style" >
                     <Textbox label = {constants.REACT_APP_GENDER_LABEL} type="text" onChange={(e) => setGender(e.target.value)}/>
                     <Textbox label = {constants.REACT_APP_ADDRESS_LABEL} type="text" onChange={(e) => setAddress(e.target.value)}/>
-                    <Textbox label = {constants.REACT_APP_ABHA_ID_LABEL} type="text" onChange={(e) => setAbhaID(e.target.value)}/>
                 </Form.Group>
                 <div className='form-register-button'>
                     <Button label = {constants.REACT_APP_REGISTER_LABEL} onClick={(e) => onRegister(e)}/>
