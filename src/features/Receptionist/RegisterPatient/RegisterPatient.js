@@ -17,22 +17,23 @@ function RegisterPatient() {
 
     const onRegister = (e) => {
         e.preventDefault();
-        data["id"] = Math.floor(Math.random() * 1000);
-        data["password"] = null;
+        data["login"] = null;
         console.log(data);
         fetch(`${window._env_.API_URL}/patient/add`, {
             method:"POST",
             headers:{
                 "Content-Type": "application/json",
-                'Authorization': 'Basic ' + localStorage.getItem("token") 
+                'Authorization': 'Bearer ' + localStorage.getItem("token") 
             },
             body:JSON.stringify(data)
         })
         .then(response => response.json())
         .then((data) => {
-            console.log("Success:", data);
+            if (data.status == 200) {
+                setShow(true);
+            }
           })
-        setShow(true);
+        
     }
 
     return (
