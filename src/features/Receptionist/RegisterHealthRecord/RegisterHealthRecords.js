@@ -14,6 +14,8 @@ function RegisterHealthRecords() {
       const login = JSON.parse(localStorage.getItem("user"));
       if (!login || login.role !== "RECEPTIONIST") {
           navigate("/");
+          localStorage.removeItem("user");
+          localStorage.removeItem("token");
           return;
       }
       if (login || login.role === "RECEPTIONIST") {

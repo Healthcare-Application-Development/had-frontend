@@ -17,6 +17,8 @@ function RegisterReceptionist() {
         const login = JSON.parse(localStorage.getItem("user"));
         if (!login || login.role !== "ADMIN") {
             navigate("/");
+            localStorage.removeItem("user");
+            localStorage.removeItem("token");
             return;
         }
         if (login && login.role === "ADMIN") {
