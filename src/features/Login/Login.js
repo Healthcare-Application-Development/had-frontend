@@ -12,33 +12,23 @@ function Login() {
     const onLogin = (e) => {
         e.preventDefault();
         const loginObj = {
-            email: email,
-            login : {
-                username: email,
-                password: password,
-                role: {
-                    name : selectedOption === 'receptionist' ? 'RECEPTIONIST' : 'ADMIN'
-                }
-            }
+            username: email,
+            password: password,
+            role:  selectedOption === 'receptionist' ? 'RECEPTIONIST' : 'ADMIN'
         }
-        var URL = '';
-        if (selectedOption === 'receptionist') {
-            URL = window._env_.API_URL + '/receptionist/login';
-        } else {
-            URL = window._env_.API_URL + '/admin/login';
-        }
+        const URL = window._env_.API_URL + '/authenticate';
+
         fetch(URL, {
             body: JSON.stringify(loginObj),
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json',
-                'Authorization': 'Basic ' + (window.btoa(email + ":" + password))
+                'Content-Type': 'application/json'
             }
         }).then(response => response.json())
         .then((data) => {
             if (data.status === 200) {
                 localStorage.setItem("user", JSON.stringify(data.object))
-                localStorage.setItem("token", (window.btoa(email + ":" + password)))
+                localStorage.setItem("token", data.object.accessToken)
                 if (selectedOption === 'receptionist') {
                     navigate('/receptionist')
                 } else {

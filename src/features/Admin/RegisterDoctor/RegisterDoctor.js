@@ -22,25 +22,23 @@ function RegisterDoctor() {
         }
 
         createObj["phoneNo"] = phone;
-        createObj["password"] = null;
-        createObj["id"] = Math.floor(Math.random() * 1000);
+        createObj["login"] = null;
         createObj["npciID"] = abhaID;
 
-        fetch(`${window._env_.API_URL}/admin/add`, {
+        fetch(`${window._env_.API_URL}/doctor/add`, {
             method:"POST",
             headers:{
                 "Content-Type": "application/json",
-                'Authorization': 'Basic ' + localStorage.getItem("token")
+                'Authorization': 'Bearer ' + localStorage.getItem("token")
             },
             body:JSON.stringify(createObj)
         })
         .then(response => response.json())
-        .then((createObj) => {
-            console.log("Success:", createObj);
-          })
-
-
-        setShow(true);
+        .then((data) => {
+            if (data.status == 200) {
+                setShow(true);
+            }
+        })
     }
  
     return (
@@ -55,7 +53,7 @@ function RegisterDoctor() {
                 <Form.Group className="mb-4 form-group-style" >
                     <Textbox label = {constants.REACT_APP_GENDER_LABEL} type="text" onChange={(e) => setGender(e.target.value)}/>
                     <Textbox label = {constants.REACT_APP_ADDRESS_LABEL} type="text" onChange={(e) => setAddress(e.target.value)}/>
-                    <Textbox label = {constants.REACT_APP_ABHA_ID_LABEL} type="text" onChange={(e) => setAbhaID(e.target.value)}/>
+                    <Textbox label = "NPCI ID" type="text" onChange={(e) => setAbhaID(e.target.value)}/>
                 </Form.Group>
                 <div className='form-register-button'>
                     <Button label = {constants.REACT_APP_REGISTER_LABEL} onClick={(e) => onRegister(e)}/>

@@ -23,9 +23,7 @@ function RegisterReceptionist() {
             login :{
                 username: email,
                 password: password,
-                role: {
-                    id: '2'
-                }
+                role: "RECEPTIONIST"
             }
         }
 
@@ -34,11 +32,10 @@ function RegisterReceptionist() {
             method: 'POST',
             headers : {
                 'Content-Type' : 'application/json',
-                'Authorization': 'Basic ' + localStorage.getItem("token") 
+                'Authorization': 'Bearer ' + localStorage.getItem("token") 
             }
         }).then(response => response.json())
         .then((data) => {
-            console.log(data);
             setShow(true);
         })
     }
