@@ -1,19 +1,22 @@
 import React, { useState } from 'react';
-import { Form } from 'react-bootstrap';
+import { Alert, Form } from 'react-bootstrap';
 import { Button, Textbox } from '../../components';
 import { constants } from '../../constants';
 import { useNavigate } from 'react-router-dom';
 import './Login.css';
+import AESUtils from '../../encryption/AESUtils';
+
 function Login() {
     const navigate = useNavigate();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [selectedOption, setSelectedOption] = useState("");
+    const [error, setError] = useState(false);
     const onLogin = (e) => {
         e.preventDefault();
         const loginObj = {
             username: email,
-            password: password,
+            password: AESUtils.encrypt(password),
             role:  selectedOption === 'receptionist' ? 'RECEPTIONIST' : 'ADMIN'
         }
         const URL = window._env_.API_URL + '/authenticate';
@@ -27,6 +30,7 @@ function Login() {
         }).then(response => response.json())
         .then((data) => {
             if (data.status === 200) {
+                setError(false);
                 localStorage.setItem("user", JSON.stringify(data.object))
                 localStorage.setItem("token", data.object.accessToken)
                 if (selectedOption === 'receptionist') {
@@ -34,12 +38,17 @@ function Login() {
                 } else {
                     navigate('/admin')
                 }
+            } else {
+                setError(true);
             }
+        }).catch((e) => {
+            setError(true);
         });
     }
     return (
         <div className='mt-5'>
             <Form>
+                {error && <Alert variant='danger' className='login-error'>Wrong Credentials!</Alert>}
                 <p className='login-message'>{constants.REACT_APP_LOGIN_LABEL}</p>
                 <Form.Group className="mb-2 radio-style" >
                     <Form.Check type='radio' name='login' label='Admin' onClick={() => setSelectedOption('admin')}/>
