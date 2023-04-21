@@ -19,7 +19,7 @@ function RegisterPatient() {
         e.preventDefault();
         data["login"] = null;
         console.log(data);
-        fetch(`${window._env_.API_URL}/patient/add`, {
+        fetch(`${process.env.REACT_APP_API_URL}/patient/add`, {
             method:"POST",
             headers:{
                 "Content-Type": "application/json",

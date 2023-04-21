@@ -27,7 +27,7 @@ function RegisterReceptionist() {
             }
         }
 
-        fetch(`${window._env_.API_URL}/receptionist/add`, {
+        fetch(`${process.env.REACT_APP_API_URL}/receptionist/add`, {
             body: JSON.stringify(createObj),
             method: 'POST',
             headers : {

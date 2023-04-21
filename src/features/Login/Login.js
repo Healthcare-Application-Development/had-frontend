@@ -19,7 +19,7 @@ function Login() {
             password: AESUtils.encrypt(password),
             role:  selectedOption === 'receptionist' ? 'RECEPTIONIST' : 'ADMIN'
         }
-        const URL = window._env_.API_URL + '/authenticate';
+        const URL = process.env.REACT_APP_API_URL + '/authenticate';
 
         fetch(URL, {
             body: JSON.stringify(loginObj),
