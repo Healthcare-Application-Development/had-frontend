@@ -3,6 +3,8 @@ WORKDIR /react-app
 COPY ./package.json /react-app
 RUN npm install
 COPY . .
+ARG REACT_APP_API_URL # you could give this a default value as well
+ENV REACT_APP_API_URL=$REACT_APP_API_URL
 RUN npm run build
 
 # => Run container
@@ -20,11 +22,11 @@ EXPOSE 80
 
 # Copy .env file and shell script to container
 WORKDIR /usr/share/nginx/html
-COPY ./env.sh .
+# COPY ./env.sh .
 COPY .env .
 
 # Make our shell script executable
-RUN chmod +x env.sh
+# RUN chmod +x env.sh
 
 # Start Nginx server
-CMD ["/bin/sh", "-c", "/usr/share/nginx/html/env.sh && envsubst '${CONTAINER_URL}' < /etc/nginx/conf.d/my-site.conf.template > /etc/nginx/conf.d/default.conf && nginx -g \"daemon off;\""]
+CMD ["/bin/sh", "-c", "envsubst '${CONTAINER_URL}' < /etc/nginx/conf.d/my-site.conf.template > /etc/nginx/conf.d/default.conf && nginx -g \"daemon off;\""]

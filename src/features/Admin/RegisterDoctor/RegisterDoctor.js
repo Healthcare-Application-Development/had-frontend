@@ -25,7 +25,7 @@ function RegisterDoctor() {
         createObj["login"] = null;
         createObj["npciID"] = abhaID;
 
-        fetch(`${window._env_.API_URL}/doctor/add`, {
+        fetch(`${process.env.REACT_APP_API_URL}/doctor/add`, {
             method:"POST",
             headers:{
                 "Content-Type": "application/json",
