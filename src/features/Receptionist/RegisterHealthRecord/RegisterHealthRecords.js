@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './RegisterHealthRecords.css';
 
 function RegisterHealthRecords() {
-  const [healthRecordType, setHealthrecordType] = useState('');
+  const [healthRecordType, setHealthRecordType] = useState('');
   const [abhaID, setAbhaID] = useState('');
   const [description, setDescription] = useState('');
   const [file, setFile] = useState(null);
@@ -62,7 +62,7 @@ function RegisterHealthRecords() {
         <select
           id="healthRecordType"
           value={healthRecordType}
-          onChange={(event) => setHealthrecordType(event.target.value)}
+          onChange={(event) => setHealthRecordType(event.target.value)}
           className="health-form-select"
         >
           <option value="">-- Select Health Record type --</option>
