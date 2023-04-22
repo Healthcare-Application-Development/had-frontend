@@ -4,7 +4,7 @@ import { Header } from './components';
 import { Login, Receptionist, RegisterPatient, AdminHome} from './features';
 import RegisterDoctor from './features/Admin/RegisterDoctor/RegisterDoctor';
 import RegisterReceptionist from './features/Admin/RegisterReceptionist/RegisterReceptionist';
-
+import RegisterHealthRecords from './features/Receptionist/RegisterHealthRecord/RegisterHealthRecords';
 
 function App() {
   return (
@@ -15,6 +15,7 @@ function App() {
         <Route path='/receptionist'>
           <Route index element={<Receptionist />} />
           <Route path='register' element={<RegisterPatient />} />
+          <Route path='healthrecord' element={<RegisterHealthRecords />} />
         </Route>
       
         <Route path='/admin'>
