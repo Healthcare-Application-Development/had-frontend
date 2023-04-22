@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './RegisterHealthRecords.css';
 
 function RegisterHealthRecords() {
-  const [complaintType, setComplaintType] = useState('');
+  const [healthRecordType, setHealthrecordType] = useState('');
   const [abhaID, setAbhaID] = useState('');
   const [description, setDescription] = useState('');
   const [file, setFile] = useState(null);
@@ -14,7 +14,7 @@ function RegisterHealthRecords() {
 
  
     const formData = {
-      complaintType: complaintType,
+      healthRecordType: healthRecordType,
       abhaID: abhaID,
       description: description,
      
@@ -60,12 +60,12 @@ function RegisterHealthRecords() {
       <form onSubmit={handleSubmit} className="health-form">
         <label className="health-form-label">Record Type</label>
         <select
-          id="complaintType"
-          value={complaintType}
-          onChange={(event) => setComplaintType(event.target.value)}
+          id="healthRecordType"
+          value={healthRecordType}
+          onChange={(event) => setHealthrecordType(event.target.value)}
           className="health-form-select"
         >
-          <option value="">-- Select Complaint Record type --</option>
+          <option value="">-- Select Health Record type --</option>
           <option value="X-ray">X-ray</option>
           <option value="Heart">Heart</option>
           <option value="Blood">Blood</option>
