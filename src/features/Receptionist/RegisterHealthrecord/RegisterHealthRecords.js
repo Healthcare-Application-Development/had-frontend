@@ -45,8 +45,8 @@ function RegisterHealthRecords() {
   };
 
   return (
-    <div className="complaint-form-container">
-      <h1 className="complaint-form-title">Health Record Form</h1>
+    <div className="health-form-container">
+      <h1 className="health-form-title">Health Record Form</h1>
       {successMessage && (
         <div className="alert alert-success" role="alert">
           {successMessage}
@@ -57,13 +57,13 @@ function RegisterHealthRecords() {
           {errorMessage}
         </div>
       )}
-      <form onSubmit={handleSubmit} className="complaint-form">
-        <label className="complaint-form-label">Record Type</label>
+      <form onSubmit={handleSubmit} className="health-form">
+        <label className="health-form-label">Record Type</label>
         <select
           id="complaintType"
           value={complaintType}
           onChange={(event) => setComplaintType(event.target.value)}
-          className="complaint-form-select"
+          className="health-form-select"
         >
           <option value="">-- Select Complaint Record type --</option>
           <option value="X-ray">X-ray</option>
@@ -78,7 +78,7 @@ function RegisterHealthRecords() {
           placeholder="abhaID"
           value={abhaID}
           onChange={(event) => setAbhaID(event.target.value)}
-          className="complaint-form-input"
+          className="health-form-input"
         />
 
         <textarea
@@ -86,10 +86,10 @@ function RegisterHealthRecords() {
           placeholder="Description"
           value={description}
           onChange={(event) => setDescription(event.target.value)}
-          className="complaint-form-textarea"
+          className="health-form-textarea"
         ></textarea>
 
-        <button type="submit" className="complaint-form-button">
+        <button type="submit" className="health-form-button">
           Submit
         </button>
       </form>
