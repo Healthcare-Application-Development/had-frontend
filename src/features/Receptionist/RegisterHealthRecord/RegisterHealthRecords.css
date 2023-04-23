@@ -43,7 +43,9 @@
     resize: none;
     height: 100px;
   }
-  
+  .health-form-title {
+    font-size: 24px;
+  }
   .health-form-button {
     background-color: #4CAF50;
     color: white;
@@ -59,7 +61,7 @@
     background-color: #3e8e41;
   }
   
-  .alert {
+  .alert-health {
     width: 80%;
     margin-top: 20px;
     padding: 15px;
@@ -69,13 +71,13 @@
     text-align: center;
   }
   
-  .alert-success {
+  .alert-success-health {
     background-color: #DFF2BF;
     color: #4F8A10;
     border: 1px solid #4F8A10;
   }
   
-  .alert-danger {
+  .alert-danger-health {
     background-color: #FFBABA;
     color: #D8000C;
     border: 1px solid #D8000C;
