@@ -1,32 +1,39 @@
 import React, { useState } from 'react';
 import './RegisterHealthRecords.css';
+import AESUtils from '../../../encryption/AESUtils';
 
 function RegisterHealthRecords() {
   const [healthRecordType, setHealthRecordType] = useState('');
   const [abhaID, setAbhaID] = useState('');
   const [description, setDescription] = useState('');
-  const [file, setFile] = useState(null);
   const [successMessage, setSuccessMessage] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
-
+  const recordTypes = {
+    1: "Blood Report",
+    2: "X-ray",
+    3: "MRI Scanning",
+    4: "General Observations",
+    5: "Medicines",
+  }
   const handleSubmit = async (event) => {
     event.preventDefault();
 
  
     const formData = {
-      healthRecordType: healthRecordType,
-      abhaID: abhaID,
-      description: description,
-     
+      recordType: AESUtils.encrypt(healthRecordType),
+      abhaId: AESUtils.encrypt(abhaID),
+      description: AESUtils.encrypt(description),
+      timestamp: new Date().toISOString()
     };
 
     try {
       
-      const response = await fetch('API_ENDPOINT_URL', {
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/patientHealthRecord/add`, {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json'
-        },
+          'Content-Type': 'application/json',
+          'Authorization' : 'Bearer ' + localStorage.getItem("token")
+        }, 
         body: JSON.stringify(formData)
       });
 
@@ -40,42 +47,38 @@ function RegisterHealthRecords() {
     }
   };
 
-  const handleFileChange = (event) => {
-    setFile(event.target.files[0]);
-  };
-
   return (
     <div className="health-form-container">
-      <h1 className="health-form-title">Health Record Form</h1>
+      <div className="health-form-title">Health Record Form</div>
       {successMessage && (
-        <div className="alert alert-success" role="alert">
+        <div className="alert-health alert-success-health" role="alert">
           {successMessage}
         </div>
       )}
       {errorMessage && (
-        <div className="alert alert-danger" role="alert">
+        <div className="alert-health alert-danger-health" role="alert">
           {errorMessage}
         </div>
       )}
       <form onSubmit={handleSubmit} className="health-form">
-        <label className="health-form-label">Record Type</label>
         <select
           id="healthRecordType"
           value={healthRecordType}
           onChange={(event) => setHealthRecordType(event.target.value)}
           className="health-form-select"
         >
-          <option value="">-- Select Health Record type --</option>
-          <option value="X-ray">X-ray</option>
-          <option value="Heart">Heart</option>
-          <option value="Blood">Blood</option>
-          <option value="others">Others</option>
+        <option value="">-- Select Health Record type --</option>
+        {recordTypes && Object.keys(recordTypes).map((element) => {
+          return (
+            <option value={recordTypes[element]}>{recordTypes[element]}</option>
+          )
+        })}
         </select>
 
         <input
           id="abhaID"
           type="text"
-          placeholder="abhaID"
+          placeholder="ABHA ID"
           value={abhaID}
           onChange={(event) => setAbhaID(event.target.value)}
           className="health-form-input"
