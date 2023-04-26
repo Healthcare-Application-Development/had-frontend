@@ -18,7 +18,6 @@ function RegisterPatient() {
     const onRegister = (e) => {
         e.preventDefault();
         data["login"] = null;
-        console.log(data);
         fetch(`${process.env.REACT_APP_API_URL}/patient/add`, {
             method:"POST",
             headers:{

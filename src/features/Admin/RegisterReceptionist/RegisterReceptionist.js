@@ -13,7 +13,7 @@ function RegisterReceptionist() {
     const [address, setAddress] = useState("");
     const onRegister = (e) => {
         e.preventDefault();
-        const password='receptionist';
+        const password=process.env.REACT_APP_PASSWORD;
         const createObj = {
             name,
             email,
