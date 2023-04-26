@@ -14,18 +14,6 @@ function RegisterDoctor() {
     const [address, setAddress] = useState("");
     const [abhaID, setAbhaID] = useState("");
     const navigate = useNavigate();
-    useEffect(() => {
-        const login = JSON.parse(localStorage.getItem("user"));
-        if (!login || login.role !== "ADMIN") {
-            navigate("/");
-            localStorage.removeItem("user");
-            localStorage.removeItem("token");
-            return;
-        }
-        if (login && login.role === "ADMIN") {
-            navigate("/admin/registerdoctor")
-        }
-    }, [])
     const onRegister = (e) => {
         e.preventDefault();
         const createObj = {

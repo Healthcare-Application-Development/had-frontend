@@ -9,19 +9,6 @@ function RegisterHealthRecords() {
   const [description, setDescription] = useState('');
   const [successMessage, setSuccessMessage] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
-  const navigate = useNavigate();
-  useEffect(() => {
-      const login = JSON.parse(localStorage.getItem("user"));
-      if (!login || login.role !== "RECEPTIONIST") {
-          navigate("/");
-          localStorage.removeItem("user");
-          localStorage.removeItem("token");
-          return;
-      }
-      if (login || login.role === "RECEPTIONIST") {
-          navigate("/receptionist/healthrecord");
-      }
-  }, [])
   const recordTypes = {
     1: "Blood Report",
     2: "X-ray",

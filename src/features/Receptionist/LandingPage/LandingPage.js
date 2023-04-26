@@ -10,16 +10,6 @@ function LandingPage() {
     if (user) {
         name = JSON.parse(user).name
     }
-    const navigate = useNavigate();
-    useEffect(() => {
-        const login = JSON.parse(localStorage.getItem("user"));
-        if (!login || login.role !== "RECEPTIONIST") {
-            navigate("/");
-            localStorage.removeItem("user");
-            localStorage.removeItem("token");
-            return;
-        }
-    }, [])
     return (
         <div className='landing-page-container'>
             <p className='landing-page-heading'>{constants.REACT_APP_WELCOME_LABEL}</p>

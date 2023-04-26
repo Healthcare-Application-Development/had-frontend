@@ -5,6 +5,7 @@ import { Login, Receptionist, RegisterPatient, AdminHome} from './features';
 import RegisterDoctor from './features/Admin/RegisterDoctor/RegisterDoctor';
 import RegisterReceptionist from './features/Admin/RegisterReceptionist/RegisterReceptionist';
 import RegisterHealthRecords from './features/Receptionist/RegisterHealthRecord/RegisterHealthRecords';
+import { ProtectedRoute } from './utils/ ProtectedRoute';
 
 function App() {
   return (
@@ -13,15 +14,15 @@ function App() {
       <Routes>
         <Route path='/' element={<Login />} />
         <Route path='/receptionist'>
-          <Route index element={<Receptionist />} />
-          <Route path='register' element={<RegisterPatient />} />
-          <Route path='healthrecord' element={<RegisterHealthRecords />} />
+          <Route index element={<ProtectedRoute><Receptionist /></ProtectedRoute>} />
+          <Route path='register' element={<ProtectedRoute><RegisterPatient /></ProtectedRoute>} />
+          <Route path='healthrecord' element={<ProtectedRoute><RegisterHealthRecords /></ProtectedRoute>} />
         </Route>
       
         <Route path='/admin'>
-          <Route index element={<AdminHome />} />
-          <Route path='registerdoctor' element={<RegisterDoctor />} />
-          <Route path='registerreceptionist' element={<RegisterReceptionist />} />
+          <Route index element={<ProtectedRoute><AdminHome /></ProtectedRoute>} />
+          <Route path='registerdoctor' element={<ProtectedRoute><RegisterDoctor /></ProtectedRoute>} />
+          <Route path='registerreceptionist' element={<ProtectedRoute><RegisterReceptionist /></ProtectedRoute>} />
         </Route>
 
 
