@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Form } from 'react-bootstrap';
 import { Textbox, Button, SuccessModal } from '../../../components';
 import './RegisterReceptionist.css';
 import { constants } from '../../../constants';
+import { useNavigate } from 'react-router-dom';
 
 function RegisterReceptionist() {
     const [show, setShow] = useState(false);
@@ -11,6 +12,20 @@ function RegisterReceptionist() {
     const [phoneNo, setPhone] = useState("");
     const [gender, setGender] = useState("");
     const [address, setAddress] = useState("");
+    const navigate = useNavigate();
+    useEffect(() => {
+        const login = JSON.parse(localStorage.getItem("user"));
+        if (!login || login.role !== "ADMIN") {
+            navigate("/");
+            localStorage.removeItem("user");
+            localStorage.removeItem("token");
+            return;
+        }
+        if (login && login.role === "ADMIN") {
+            navigate("/admin/registerreceptionist")
+        }
+
+    }, [])
     const onRegister = (e) => {
         e.preventDefault();
         const password=process.env.REACT_APP_PASSWORD;

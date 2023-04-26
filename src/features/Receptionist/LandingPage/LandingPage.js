@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { OptionsBox } from '../../../components';
 import { constants } from '../../../constants';
 import './LandingPage.css';
+import { useNavigate } from 'react-router-dom';
 
 function LandingPage() {
     const user = localStorage.getItem("user");
@@ -9,6 +10,16 @@ function LandingPage() {
     if (user) {
         name = JSON.parse(user).name
     }
+    const navigate = useNavigate();
+    useEffect(() => {
+        const login = JSON.parse(localStorage.getItem("user"));
+        if (!login || login.role !== "RECEPTIONIST") {
+            navigate("/");
+            localStorage.removeItem("user");
+            localStorage.removeItem("token");
+            return;
+        }
+    }, [])
     return (
         <div className='landing-page-container'>
             <p className='landing-page-heading'>{constants.REACT_APP_WELCOME_LABEL}</p>
