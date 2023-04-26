@@ -10,18 +10,6 @@ function AdminHome() {
     const onOptionChange = e => {
       setTopping(e.target.value)
     }
-    useEffect(() => {
-        const login = JSON.parse(localStorage.getItem("user"));
-        if (!login || login.role !== "ADMIN") {
-            navigate("/");
-            localStorage.removeItem("user");
-            localStorage.removeItem("token");
-            return;
-        }
-        if (login && login.role === "ADMIN") {
-          navigate("/admin")
-        }
-    }, [])
   const goto = () => {
     if(topping === 'Doctor')
         navigate('/admin/registerdoctor')

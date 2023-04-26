@@ -8,19 +8,6 @@ import { useNavigate } from 'react-router-dom';
 function RegisterPatient() {
     const [show, setShow] = useState(false);
     const [data, setData] = useState({})
-    const navigate = useNavigate();
-    useEffect(() => {
-        const login = JSON.parse(localStorage.getItem("user"));
-        if (!login  || login.role !== "RECEPTIONIST") {
-            navigate("/");
-            localStorage.removeItem("user");
-            localStorage.removeItem("token");
-            return;
-        }
-        if (login || login.role === "RECEPTIONIST") {
-            navigate("/receptionist/register");
-        }
-    }, [])
     const updateData = e => {
         setData({
             ...data,
